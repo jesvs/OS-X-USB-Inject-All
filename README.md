@@ -59,19 +59,19 @@ This kext may be helpful in installation scenarios as well where broken USB may 
 
 ### Injected Property Customization
 
-Two mechanisms are provided for customizing the injections that this kext performs.  Kernel flag `-uia_exclude` can be used to eliminate ports that would normally be injected. The flag `-uia_exclude` takes a string of characters with multiple port identifiers, delimited by semi-colons or commas.
+Two mechanisms are provided for customizing the injections that this kext performs.  Kernel flag `uia_exclude` can be used to eliminate ports that would normally be injected. The flag `uia_exclude` takes a string of characters with multiple port identifiers, delimited by semi-colons or commas.
 
-For example, on my Lenovo u430 without FakePCIID_XHCIMux, bluetooth is on **XHC at HS06**, and the touchscreen is at **HS01**. I can disable the touchscreen by booting with kernel flag `-uia_exclude=HS01`, or with `-uia_exclude=HS06` disable bluetooth. To disable both, `-uia_exclude=HS01;HS06`.
-With FakePCIID_XHCIMux, the touchscreen is on the hub on USB port1 on EH01. To disable this hub port, `-uia_exclude=HP11`.  You can easily see which devices are connected to which ports.  Each port identifier injected by the kext is unique, so you can easily identify each one.
+For example, on my Lenovo u430 without FakePCIID_XHCIMux, bluetooth is on **XHC at HS06**, and the touchscreen is at **HS01**. I can disable the touchscreen by booting with kernel flag `uia_exclude=HS01`, or with `uia_exclude=HS06` disable bluetooth. To disable both, `uia_exclude=HS01;HS06`.
+With FakePCIID_XHCIMux, the touchscreen is on the hub on USB port1 on EH01. To disable this hub port, `uia_exclude=HP11`.  You can easily see which devices are connected to which ports.  Each port identifier injected by the kext is unique, so you can easily identify each one.
 
 In addition a few other flags are available:
 
 | Boot Flag | Effect |
 | --------- | ------ |
-| `-uia_exclude_hs`  | excludes all HSxx ports   |
-| `-uia_exclude_ss`  | excludes all SSxx ports   |
-| `-uia_exclude_ssp` | excludes all SSPx ports   |
-| `-uia_exclude_xhc` | disables injection on XHC |
+| `uia_exclude_hs`  | excludes all HSxx ports   |
+| `uia_exclude_ss`  | excludes all SSxx ports   |
+| `uia_exclude_ssp` | excludes all SSPx ports   |
+| `uia_exclude_xhc` | disables injection on XHC |
 
 Excluding ports doesn't give all the flexibility that might be needed. All of the data in the `Info.plist` for `ConfigurationData` can be configured through ACPI.
 
